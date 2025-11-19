@@ -29,26 +29,20 @@
                 </Button>
             </ToolBar>
             <ToolBar x:Name="Yee2" Height="40" Width="300" Background="#FFEEB3FD">
-                <Button x:Name="Bold" Height="32" Width="32">
+                <ToggleButton x:Name="Bold" Height="32" Width="32" Command="EditingCommands.ToggleBold">
                     <Image Height="26" Width="29" Source="/bold.png" />
-                </Button>
-                <Button x:Name="Iwhatever" Height="32" Width="32">
+                </ToggleButton>
+                <ToggleButton x:Name="Iwhatever" Height="32" Width="32" Command="EditingCommands.ToggleItalic">
                     <Image Height="26" Width="29" Source="/letteri.png"/>
-                </Button>
-                <Button x:Name="Underline" Height="32" Width="32">
+                </ToggleButton>
+                <ToggleButton x:Name="Underline" Height="32" Width="32" Command="EditingCommands.ToggleUnderline">
                     <Image Height="26" Width="29" Source="/underline.png"/>
-                </Button>
+                </ToggleButton>
+                <xctk:ColorPicker x:Name="FontColorPicker" Width="100" Height="32" DisplayColorAndName="True"/>
+                <ComboBox x:Name="FontFamilyComboBox" Height="32" Width="100"/>
+                <ComboBox x:Name="FontSizeComboBox" Height="32" Width="50" />
             </ToolBar>
         </ToolBarTray>
-        <StatusBar Height="30" Width="798" DockPanel.Dock="Bottom" Background="Silver">
-
-        </StatusBar>
-        <RichTextBox x:Name="Editor" Background="Honeydew">
-            <FlowDocument>
-                <Paragraph>
-
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+        <RichTextBox Background="Honeydew"/>
     </DockPanel>
 </Window>

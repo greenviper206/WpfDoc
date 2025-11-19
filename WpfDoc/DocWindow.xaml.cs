@@ -23,13 +23,18 @@ namespace WpfDoc
         public DocWindow()
         {
             InitializeComponent();
-            FontcolorPicker.SelectedColor = fontColor;
-
-            foreach (FontFamily font in Fonts.SystemFontFamilies)
+            FontColorPicker.SelectedColor = fontColor;
+            foreach (FontFamily fontFamily in Fonts.SystemFontFamilies)
             {
-                FontFamilyComboBox.Items.Add(font);
+                FontFamilyComboBox.Items.Add(fontFamily.Source);
             }
-            FontFamilyComboBox.SelectedItem = this.FontFamily;
+            FontFamilyComboBox.SelectedIndex = 1;
+
+            FontSizeComboBox.ItemsSource = new List<double>()
+            {
+                8,9,10,11,12,14,16,18,20,22,24,26,28,36,48,72
+            };
+            FontSizeComboBox.SelectedIndex = 4;
         }
 
         private void NewFile_Executed(object sender, ExecutedRoutedEventArgs e)
