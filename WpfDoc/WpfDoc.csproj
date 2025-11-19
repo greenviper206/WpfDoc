@@ -8,4 +8,28 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="addnew.png" />
+    <None Remove="bold.png" />
+    <None Remove="del.png" />
+    <None Remove="letteri.png" />
+    <None Remove="openfile.png" />
+    <None Remove="save.png" />
+    <None Remove="underline.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="addnew.png" />
+    <Resource Include="bold.png" />
+    <Resource Include="del.png" />
+    <Resource Include="letteri.png" />
+    <Resource Include="openfile.png" />
+    <Resource Include="save.png" />
+    <Resource Include="underline.png" />
+  </ItemGroup>
+
 </Project>

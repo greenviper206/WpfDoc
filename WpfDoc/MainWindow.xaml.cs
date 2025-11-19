@@ -20,5 +20,11 @@ namespace WpfDoc
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DocWindow docWindow = new DocWindow();
+            docWindow.Show();
+        }
     }
 }
