@@ -24,25 +24,26 @@
                 <Button x:Name="SaveFile" Height="32" Width="32" Command="ApplicationCommands.Save">
                     <Image Height="26" Width="29" Source="/save.png"/>
                 </Button>
-                <Button x:Name="DelAll" Height="32" Width="32">
+                <Button x:Name="DelAll" Height="32" Width="32" Click="DelAll_Clicked">
                     <Image Height="26" Width="29" Source="/del.png"/>
                 </Button>
             </ToolBar>
-            <ToolBar x:Name="Yee2" Height="40" Width="300" Background="#FFEEB3FD">
+            <ToolBar x:Name="Yee2" Height="40" Width="416" Background="#FFEEB3FD">
                 <ToggleButton x:Name="Bold" Height="32" Width="32" Command="EditingCommands.ToggleBold">
                     <Image Height="26" Width="29" Source="/bold.png" />
                 </ToggleButton>
-                <ToggleButton x:Name="Iwhatever" Height="32" Width="32" Command="EditingCommands.ToggleItalic">
+                <ToggleButton x:Name="Italic" Height="32" Width="32" Command="EditingCommands.ToggleItalic">
                     <Image Height="26" Width="29" Source="/letteri.png"/>
                 </ToggleButton>
                 <ToggleButton x:Name="Underline" Height="32" Width="32" Command="EditingCommands.ToggleUnderline">
                     <Image Height="26" Width="29" Source="/underline.png"/>
                 </ToggleButton>
-                <xctk:ColorPicker x:Name="FontColorPicker" Width="100" Height="32" DisplayColorAndName="True"/>
-                <ComboBox x:Name="FontFamilyComboBox" Height="32" Width="100"/>
-                <ComboBox x:Name="FontSizeComboBox" Height="32" Width="50" />
+                <xctk:ColorPicker x:Name="FontColorPicker" Width="100" Height="32" DisplayColorAndName="True" SelectedColorChanged="FontColorPicker_SelectedColorChanged"/>
+                <ComboBox x:Name="FontFamilyComboBox" Height="32" Width="100" SelectionChanged="FontFamilyComboBox_SelectionChanged"/>
+                <ComboBox x:Name="FontSizeComboBox" Height="32" Width="50" SelectionChanged="FontSizeComboBox_SelectionChanged" />
             </ToolBar>
         </ToolBarTray>
-        <RichTextBox Background="Honeydew"/>
+        <RichTextBox x:Name="Edit" Background="Honeydew" SelectionChanged="Edit_SelectionChanged">
+        </RichTextBox>
     </DockPanel>
 </Window>
