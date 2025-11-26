@@ -23,10 +23,12 @@ namespace WpfDoc
     public partial class DocWindow : Window
     {
         Color fontColor = Colors.Black;
+        Color fontBackgorund = Colors.Transparent;
         public DocWindow()
         {
             InitializeComponent();
             FontColorPicker.SelectedColor = fontColor;
+            FontBackgroundColorPicker.SelectedColor = fontBackgorund;
             foreach (FontFamily fontFamily in Fonts.SystemFontFamilies)
             {
                 FontFamilyComboBox.Items.Add(fontFamily.Source);
@@ -68,7 +70,7 @@ namespace WpfDoc
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             {
-                saveFileDialog.Filter = "Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
+                saveFileDialog.Filter = "Rich Text Format (*.rtf)|*.rtf|(*.html)|*.html|All files (*.*)|*.*";
                 saveFileDialog.DefaultExt = ".rtf";
                 saveFileDialog.AddExtension = true;
             };
@@ -105,13 +107,26 @@ namespace WpfDoc
 
             var property_fontcolor = Edit.Selection.GetPropertyValue(TextElement.ForegroundProperty);
             FontColorPicker.SelectedColor = ((SolidColorBrush)property_fontcolor).Color;
+
+            var property_font_background_color = Edit.Selection.GetPropertyValue(TextElement.BackgroundProperty);
+            if (property_font_background_color is SolidColorBrush backgroundBrush)
+            {
+                FontBackgroundColorPicker.SelectedColor = backgroundBrush.Color;
+            }
+            else
+            {
+                FontBackgroundColorPicker.SelectedColor = fontBackgorund;
+            }
         }
 
         private void FontColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            fontColor = (Color)e.NewValue;
-            SolidColorBrush fontBrush = new SolidColorBrush(fontColor);
-            Edit.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, fontBrush);
+            if (e.NewValue.HasValue)
+            {
+                fontColor = e.NewValue.Value;
+                SolidColorBrush fontBrush = new SolidColorBrush(fontColor);
+                Edit.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, fontBrush);
+            }
         }
 
         private void FontFamilyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -127,6 +142,16 @@ namespace WpfDoc
             if (FontSizeComboBox.SelectedItem != null)
             {
                 Edit.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, FontSizeComboBox.SelectedItem);
+            }
+        }
+
+        private void FontBackgroundColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (e.NewValue.HasValue)
+            {
+                fontBackgorund = e.NewValue.Value;
+                SolidColorBrush backgroundBrush = new SolidColorBrush(fontBackgorund);
+                Edit.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, backgroundBrush);
             }
         }
     }

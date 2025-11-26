@@ -39,11 +39,18 @@
                     <Image Height="26" Width="29" Source="/underline.png"/>
                 </ToggleButton>
                 <xctk:ColorPicker x:Name="FontColorPicker" Width="100" Height="32" DisplayColorAndName="True" SelectedColorChanged="FontColorPicker_SelectedColorChanged"/>
+                <xctk:ColorPicker x:Name="FontBackgroundColorPicker" Width="100" Height="32" VerticalAlignment="Center" DisplayColorAndName="True" SelectedColorChanged="FontBackgroundColorPicker_SelectedColorChanged"/>
                 <ComboBox x:Name="FontFamilyComboBox" Height="32" Width="100" SelectionChanged="FontFamilyComboBox_SelectionChanged"/>
                 <ComboBox x:Name="FontSizeComboBox" Height="32" Width="50" SelectionChanged="FontSizeComboBox_SelectionChanged" />
             </ToolBar>
         </ToolBarTray>
-        <RichTextBox x:Name="Edit" Background="Honeydew" SelectionChanged="Edit_SelectionChanged">
+        <StatusBar DockPanel.Dock="Bottom" Height="30">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusBarText" Text="Ready" />
+            </StatusBarItem>
+        </StatusBar>
+        <RichTextBox x:Name="Edit" Margin="10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Background="Honeydew" SelectionChanged="Edit_SelectionChanged">
+            <FlowDocument />
         </RichTextBox>
     </DockPanel>
 </Window>
